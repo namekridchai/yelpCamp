@@ -1,0 +1,28 @@
+<%layout("layouts/boilerplate")%>
+<h1>Register!!</h1>
+<form action="/login" class = "validate" novalidate method = 'POST'>
+    <div class="mb-3">
+        <label class="form-label" for="username">username</label>
+        <input type="text" id="username" class="form-control" name="username" required>
+        <div class="valid-feedback">
+            Looks good!
+          </div>
+        <div class="invalid-feedback">
+            Looks good!
+          </div>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label" for="password">password</label>
+        <input type="password" id="password" class="form-control" name="password" required>
+        <div class="valid-feedback">
+            Looks good!
+          </div>
+        <div class="invalid-feedback">
+            Looks good!
+          </div>
+    </div>
+
+    
+    <button class = 'btn btn-success'>log in</button>
+</form>
