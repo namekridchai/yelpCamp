@@ -11,6 +11,9 @@ const camgroundSchema= new mongoose.Schema({
     [{type:Schema.Types.ObjectId,
             ref:'Review'
     }],
+    author:{type:Schema.Types.ObjectId,
+      ref:'User'
+            }
   });
   camgroundSchema.post('findOneAndDelete',async function(doc){
     if(doc.Reviews.length && doc){

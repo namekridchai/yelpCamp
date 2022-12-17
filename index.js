@@ -10,7 +10,6 @@ const ejsMate = require('ejs-mate');
 const morgan = require('morgan');
 const myError = require('./err')
 const AppError = require('./utils/expressError')
-const catchAsync = require('./utils/catchAsync')
 const session = require('express-session')
 const flash  = require('connect-flash')
 const user = require('./models/user')
@@ -48,7 +47,7 @@ passport.serializeUser(user.serializeUser())
 passport.deserializeUser(user.deserializeUser())
 
 app.use((req,res,next)=>{
-  console.log(req.session)
+  //console.log(req.session)
   res.locals.success = req.flash('success')
   res.locals.fail = req.flash('fail')
   res.locals.error = req.flash('error')
@@ -69,10 +68,7 @@ async function main() {
 }
 app.engine('ejs',ejsMate);
 app.use((req,res,next)=>{
- // console.log(req.method);
- // console.log(req.originalUrl);
   next();
-
 })
 
 app.get('/fakeuser',async (req,res) =>{

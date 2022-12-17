@@ -19,6 +19,7 @@ const createSeed = async()=>{
         const test = new Campground({location:`${cities[rand].city},${cities[rand].state}`,
                                 title:`${givenArr(descriptors)}, ${givenArr(places)}`,
                                 price:price,
+                                author:"639c568c1d904d57a594f5e2",
                                 image:"https://source.unsplash.com/collection/483251",
                                 description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam aut at reiciendis numquam veniam praesentium, impedit, sunt consequatur laudantium, beatae quo iusto molestiae aliquid voluptatum labore maxime! Cupiditate, dolorem a."
                                });
