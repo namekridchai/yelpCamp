@@ -30,8 +30,8 @@ const configSession = {
 const routeCamp = require('./route/campground')
 const routeReview = require('./route/review');
 const routeUser = require('./route/users');
-const multer  = require('multer')
-const upload = multer({ dest: 'uploads/' })
+
+
 app.use(session(configSession))
 app.use('/', express.static(__dirname + '/public'));
 app.use(express.json());
