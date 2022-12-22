@@ -8,7 +8,7 @@ module.exports.index = async (req,res) =>{
 module.exports.newForm = (req,res) =>{
     res.render('campgrounds/new');
  }
- module.exports.showCampground = async (req,res) =>{
+module.exports.showCampground = async (req,res) =>{
     const camp = await Campground.findById(req.params.id).populate({path:'Reviews',populate:{path:'author'}})
                                                           .populate('author');
     if(!camp){
@@ -19,6 +19,10 @@ module.exports.newForm = (req,res) =>{
   }
 module.exports.createCampground = async (req,res,next) =>{
     const newCampground = new Campground(req.body.campground);
+    newCampground.image = req.files.map(f=>({
+        url:f.path,
+        filename:f.filename
+    }))
      newCampground.author = req.user._id 
      await newCampground.save();
       req.flash('success','post data success')
@@ -41,4 +45,4 @@ module.exports.update = async (req,res) =>{
 module.exports.delete = async (req,res) =>{
     await Campground.findByIdAndDelete(req.params.id);
     res.redirect('/campgrounds');  
-  }
+}

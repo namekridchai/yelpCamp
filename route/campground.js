@@ -6,16 +6,12 @@ const app = express();
 const campground = require('../controller/campground')
 const router = express.Router({mergeParams:true});
 const multer  = require('multer')
-const upload = multer({ dest: 'uploads/' })
+const{storage} = require('../cloudinary/index')
+const upload = multer({ storage: storage})
 router.route('/')
       .get(campground.index)
-   //   .post( isLogin,isAuthor,validateCampground,catchAsync( campground.createCampground))
-      .post(upload.array('photos'), function (req, res, next) {
-    // req.files is array of `photos` files
-    // req.body will contain the text fields, if there were any
-        console.log(req.files,req.body)
-        res.send("post pic success")
-  })
+      .post( isLogin,upload.array('photos'),validateCampground,catchAsync( campground.createCampground))
+    
   
 router.get('/new',isLogin,isAuthor,campground.newForm);
 router.route('/:id')

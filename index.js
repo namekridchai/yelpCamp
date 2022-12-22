@@ -1,3 +1,6 @@
+if(process.env.NODE_ENV !== "production")
+    require('dotenv').config()
+console.log(process.env.cloud_name)
 const { urlencoded } = require('express');
 const express = require('express');
 const mongoose = require('mongoose');
@@ -27,6 +30,7 @@ const configSession = {
     
   }
 }
+
 const routeCamp = require('./route/campground')
 const routeReview = require('./route/review');
 const routeUser = require('./route/users');

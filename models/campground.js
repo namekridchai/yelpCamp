@@ -3,7 +3,10 @@ const Review = require('./review')
 const {Schema} = mongoose
 const camgroundSchema= new mongoose.Schema({
     title: String,
-    image: String,
+    image: [{
+      url:String,
+      filename:String
+    }],
     price: Number,
     description: String,
     location: String,

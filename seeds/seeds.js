@@ -20,7 +20,18 @@ const createSeed = async()=>{
                                 title:`${givenArr(descriptors)}, ${givenArr(places)}`,
                                 price:price,
                                 author:"639c568c1d904d57a594f5e2",
-                                image:"https://source.unsplash.com/collection/483251",
+                                image: [
+                                    {
+                                      url: 'https://res.cloudinary.com/dyjryngbn/image/upload/v1671531647/samples/landscapes/beach-boat.jpg',
+                                      filename: 'Yelpcamp/jjqdmmhk6eretgr97ikv',
+                                   
+                                    },
+                                    {
+                                      url: 'https://res.cloudinary.com/dyjryngbn/image/upload/v1671717623/Yelpcamp/sfevccssc3kkzrrkiwuo.jpg',
+                                      filename: 'Yelpcamp/sfevccssc3kkzrrkiwuo',
+                                      
+                                    }
+                                  ],
                                 description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam aut at reiciendis numquam veniam praesentium, impedit, sunt consequatur laudantium, beatae quo iusto molestiae aliquid voluptatum labore maxime! Cupiditate, dolorem a."
                                });
         await test.save();
