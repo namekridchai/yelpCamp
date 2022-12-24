@@ -20,6 +20,7 @@ const createSeed = async()=>{
                                 title:`${givenArr(descriptors)}, ${givenArr(places)}`,
                                 price:price,
                                 author:"639c568c1d904d57a594f5e2",
+                                geometry: { type: 'Point', coordinates: [ cities[rand].longitude, cities[rand].latitude ] },
                                 image: [
                                     {
                                       url: 'https://res.cloudinary.com/dyjryngbn/image/upload/v1671531647/samples/landscapes/beach-boat.jpg',

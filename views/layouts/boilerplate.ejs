@@ -8,6 +8,12 @@
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.css" rel="stylesheet">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.js"></script>  
+    <!-- <style>
+        body { margin: 0; padding: 0; }
+        #map { position: absolute; top: 0; bottom: 0; width: 100%; }
+        </style>   -->
 </head>
 
 <body class="d-flex flex-column vh-100">
@@ -26,36 +32,7 @@
             crossorigin="anonymous"></script>
         <script src="/js/nav.js"></script>
         <%-include('../partials/footer') %>
-            <script>// Example starter JavaScript for disabling form submissions if there are invalid fields
-                (function () {
-                    'use strict'
-                    const input = document.querySelector('#photos');
-                    const preview = document.querySelector('.preview');
-
-                    input.style.opacity = 0;
-                    input.addEventListener('change', updateImageDisplay);
-                    function updateImageDisplay() {
-                        while (preview.firstChild) {
-                            preview.removeChild(preview.firstChild);
-                        }
-                        const curFiles = input.files;
-                        if (curFiles.length === 0) {
-                            const para = document.createElement('p');
-                            para.textContent = 'No files currently selected for upload';
-                            preview.appendChild(para);
-                        } else {
-                            let message = "";
-                            const para = document.createElement('p');
-                            for (const file of curFiles) {
-                               message = message+" "+ file.name;
-                            }
-                            para.textContent = message;
-                            preview.appendChild(para)
-                        }
-                    }
-
-                })()
-            </script>
+         
 </body>
 
 </html>
