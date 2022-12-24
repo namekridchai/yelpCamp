@@ -16,7 +16,7 @@ router.route('/')
 router.get('/new',isLogin,isAuthor,campground.newForm);
 router.route('/:id')
        .get(catchAsync(campground.showCampground))
-       .put(isLogin,isAuthor,catchAsync(campground.update))
+       .put(isLogin,isAuthor,upload.array('photos'),validateCampground,catchAsync(campground.update))
        .delete(isLogin,isAuthor,catchAsync(campground.delete))
   
 router.get('/:id/edit',isLogin,isAuthor,catchAsync(campground.renderEditForm));

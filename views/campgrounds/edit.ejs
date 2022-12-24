@@ -5,7 +5,7 @@
     <div class="row">
         <h1 class="text-center">EDIT CAMPGROUND</h1>
         <div class="col-6 offset-3">
-            <form action="/campgrounds/<%=camp._id%>?_method=PUT" method="post" novalidate class = 'validate'>
+            <form action="/campgrounds/<%=camp._id%>?_method=PUT" method="post" novalidate class = 'validate' enctype="multipart/form-data">
                 <div>
                     <div class="mb-3">
                         <label for="title" class="form-label"> title</label>
@@ -29,7 +29,7 @@
                     </div>
                     <div class="input-group mb-3">
                         <span class="input-group-text">$</span>
-                        <input name:="campground[price]" type="text" class="form-control" aria-label="Amount (to the nearest dollar)"value = "<%=camp.price%>"required>
+                        <input name="campground[price]" type="text" class="form-control" aria-label="Amount (to the nearest dollar)"value = "<%=camp.price%>"required>
                         <div class="valid-feedback">
                             Looks good!
                           </div>
@@ -37,15 +37,19 @@
                             Looks good!
                         </div>
                     </div>
-                    <div class="mb-3">
-                        <label class="form-label" for="location">image</label>
-                        <input type="text" id="location" class="form-control" name="campground[image]"value = "<%=camp.image%>"required>
+                    <div class="mb-1 row " >
+                      <div class = "col-3"> 
+                        <label class ='btn btn-light' for="photos">Upload Picture</label>
+                      </div>
+                      <div class = "preview col-9 btn disabled">
+                        <p>No picture selected</p>
+                      </div>
                         <div class="valid-feedback">
                             Looks good!
-                          </div>
+                        </div>
                         <div class="invalid-feedback">
                             Looks good!
-                          </div>
+                        </div>
                     </div>
                     <div class="mb-3">
                         <label class="form-label" for="location">description</label>
@@ -57,8 +61,34 @@
                             Looks good!
                           </div>
                     </div>
+                    
+                    <%for (let i = 0;i<camp.image.length;i+=2){%>
+                      <div class = "row">
+                        <div class = 'col-6'>
+                          <img src="<%=camp.image[i].thumbnail%>" class = "img-thumbnail" alt="">
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name = "deleteImg[]" value="<%=camp.image[i].filename%>" id="img<%=i%>">
+                            <label class="form-check-label" for="img<%=i%>">
+                              Delete
+                            </label>
+                          </div>
+                        </div>
+                        <% if(i+1<camp.image.length){ %> 
+                        <div class = 'col-6'>
+                          <img src="<%=camp.image[i+1].thumbnail%>" class = "img-thumbnail" alt="">
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name = "deleteImg[]" value="<%=camp.image[i+1].filename%>" id="img<%=i+1%>">
+                            <label class="form-check-label" for="img<%=i+1%>">
+                              Delete
+                            </label>
+                          </div>
+                        </div>
+                        <% } %> 
+                      </div>
+                     <%}%> 
 
-
+                    <input type="file" name="photos" id="photos" multiple>
+                    <br>
                     <button class="btn btn-info">edit</button>
                 </div>
 
@@ -67,24 +97,3 @@
         </div>
 
     </div>
-<script>// Example starter JavaScript for disabling form submissions if there are invalid fields
-    (function () {
-      'use strict'
-    
-      // Fetch all the forms we want to apply custom Bootstrap validation styles to
-      var forms = document.querySelectorAll('.validate')
-    
-      // Loop over them and prevent submission
-      Array.from(forms)
-        .forEach(function (form) {
-          form.addEventListener('submit', function (event) {
-            if (!form.checkValidity()) {
-              event.preventDefault()
-              event.stopPropagation()
-            }
-    
-            form.classList.add('was-validated')
-          }, false)
-        })
-    })()
-</script>

@@ -8,6 +8,7 @@ const Schema = Joi.object(
         location:Joi.string().required(),
         description:Joi.string().required(),
       }
-    ).required()
+    ).required(),
+    deleteImg:Joi.array()
     })
 module.exports = Schema
