@@ -21,17 +21,19 @@ const passport = require('passport')
 const MongoStore = require('connect-mongo');
 const atlas = process.env.atlas||'mongodb://127.0.0.1:27017/yelp'
 const url = 'mongodb://127.0.0.1:27017/yelp'
+const secret = process.env.secret
 const store = new MongoStore({
   mongoUrl: atlas,
-  secret:'secret',
+  secret:secret,
   touchAfter: 24 * 60 * 60
 });
+
 store.on("error", function (e) {
   console.log("SESSION STORE ERROR", e)
 })
 const configSession = {
   store,
-  secret:'secret'
+  secret:secret
   ,resave:false,
   saveUninitialized:true,
   cookie:{
