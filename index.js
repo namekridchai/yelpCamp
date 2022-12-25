@@ -21,7 +21,7 @@ const passport = require('passport')
 const MongoStore = require('connect-mongo');
 const atlas = process.env.atlas||'mongodb://127.0.0.1:27017/yelp'
 const url = 'mongodb://127.0.0.1:27017/yelp'
-const secret = process.env.secret
+const secret = process.env.DBsecret
 const store = new MongoStore({
   mongoUrl: atlas,
   secret:secret,
@@ -133,7 +133,7 @@ mongoose.set('strictQuery', false);
 main().then(err => console.log('whooo'));
 
 async function main() {
-  await mongoose.connect('mongodb://127.0.0.1:27017/yelp');
+  await mongoose.connect(atlas);
   // use `await mongoose.connect('mongodb://user:password@localhost:27017/test');` if your database has auth enabled
 }
 app.engine('ejs',ejsMate);
