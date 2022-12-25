@@ -128,7 +128,8 @@
     });  
     const marker1 = new mapboxgl.Marker()
     .setLngLat([<%-camp.geometry.coordinates%>])
-    .setPopup(new mapboxgl.Popup().setHTML(`<h3>${'<%-camp.location%>'}</h3>`))
+    .setPopup(new mapboxgl.Popup().setHTML(`<h5>${'<%-camp.location%>'}</h5>`))
     .addTo(map);
-    
+    const nav = new mapboxgl.NavigationControl();
+map.addControl(nav, 'top-left');
   </script>

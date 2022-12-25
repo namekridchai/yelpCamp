@@ -1,9 +1,11 @@
 <%layout("layouts/boilerplate")%>
-<h1>Login!!</h1>
+<div class = "row">
+  <div class = "col-6 offset-3 ">
+    <h1 class = "text-center">Login</h1>
 <form action="/login" class = "validate" novalidate method = 'POST'>
     <div class="mb-3">
         <label class="form-label" for="username">username</label>
-        <input type="text" id="username" class="form-control" name="username" required>
+        <input type="text" id="username" class="form-control" name="username" required autofocus>
         <div class="valid-feedback">
             Looks good!
           </div>
@@ -14,7 +16,7 @@
 
     <div class="mb-3">
         <label class="form-label" for="password">password</label>
-        <input type="password" id="password" class="form-control" name="password" required>
+        <input type="password" id="password" class="form-control" name="password" required autofocus>
         <div class="valid-feedback">
             Looks good!
           </div>
@@ -22,7 +24,10 @@
             Looks good!
           </div>
     </div>
-
+    <div class="d-grid gap-2">
+      <button class = 'btn btn-success btn-block'>log in</button>
+    </div>
     
-    <button class = 'btn btn-success'>log in</button>
 </form>
+  </div>
+</div>
